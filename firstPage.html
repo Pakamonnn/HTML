@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>firstPage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: white;
+        }
+        .center{
+            text-align: center;
+        }
+        .headButton{ /* class button style */
+            border-radius: 15px;
+            background: #f20d1f;
+            margin: 5px; /* Added for spacing between buttons */
+            /* padding: 20px;
+            width: 150px;
+            height: 70px; */
+        }
+        .backButton{
+            float: right; /* position = right */
+            border-radius: 15px;
+            background: #059BFA;
+        }
+        #question{
+            font-size: 30px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="buttonSelect" class="center">
+        <button class="headButton" onclick="document.location = 'HRKquiz.html'">
+            <h2 style="color: white;">HRK Quiz</h2>
+        </button>
+        <button class="headButton" onclick="randomizationNumber()">
+            <h2 style="color: white;">Random Number</h2>
+        </button>
+        <button class="headButton" onclick="singUpButton()">
+            <h2 style="color: white;">SingUp Button</h2>
+        </button>
+    </div>    
+
+    
+    
+    <div id="randomization" hidden>
+        <h2>Random Number</h2>
+        choose number to random
+        <input id="minNumber" size="3"> between <input id="maxNumber" size="3">
+            <!-- <br><input id="number" size="3" readonly> -->
+        <h4 id="number"></h4>
+        <button onclick="randomNumber()">Click to Random</button> 
+    </div>
+    
+    <div id="singUp" hidden>
+        <h2>SingUp Button</h2>
+    </div>
+
+    <br><button class="backButton" id="buttonBack" onclick="firstPage()" hidden>
+        <h2 style="color: white">Back</h2>
+    </button>
+
+    <script>
+        let point = 0
+        function allQuiz(){
+            quiz.hidden = false
+            randomization.hidden = true
+            singUp.hidden = true
+            buttonSelect.hidden = true
+            buttonBack.hidden = false
+        }
+        function randomizationNumber(){
+            quiz.hidden = true
+            randomization.hidden = false
+            singUp.hidden = true
+            buttonSelect.hidden = true
+            buttonBack.hidden = false
+        }
+        function singUpButton(){
+            quiz.hidden = true
+            randomization.hidden = true
+            singUp.hidden = false
+            buttonSelect.hidden = true
+            buttonBack.hidden = false
+        }
+        function firstPage(){
+            buttonSelect.hidden = false
+            buttonBack.hidden = true
+            quiz.hidden = true
+            randomization.hidden = true
+            singUp.hidden = true
+        }
+        function correctAns() {
+            point = point + 1
+            question.hidden = true
+            // correct.hidden = false
+            // incorrect.hidden = true
+            console.log("point is " + point)
+        }
+        function incorrectAns() {
+            point = point
+            question.hidden = true
+            // correct.hidden = true
+            // incorrect.hidden = false
+            console.log("point is " + point)
+        }
+        function tryAgain() {
+            question.hidden = false
+            // correct.hidden = true
+            // incorrect.hidden = true
+        }
+        function randomNumber() {
+            let max = parseInt(maxNumber.value)
+            let min = parseInt(minNumber.value)
+            let result = Math.floor(Math.random() * (max - min)) + min;
+            // console.log("maxNumber.value is " + max + " type is " + typeof max)
+            // console.log("minNumber.value is " + min + " type is " + typeof min)
+            // console.log("result is " + result)
+            // number.value = result
+            document.getElementById("number").innerHTML = result
+        }
+        console.log("point is " + point)
+
+    </script>
+
+</body>
+
+</html>

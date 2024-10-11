@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>secondPage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .center{
+            text-align: center;
+        }
+        .rightButton{
+            float: right; /* position = right */
+            border-radius: 15px;
+            background: #059BFA;
+            margin: 5px;
+            font-size: 10px;
+        }
+        .firstPageButton{
+            float: right; /* position = right */
+            border-radius: 15px;
+            background: #d505fa;
+            margin: 5px;
+            /* font-size: 20px; */
+        }
+        .question{
+            font-size: 25px
+        }
+        .answer{
+            font-size: 15px
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+    <h1 class="center">HRK Quiz</h1>
+    <p class="question" id="questions"><b>Question 1 : </b> What does HRK stand for?</p>
+
+    <div id="answer">
+        <button class="answer" onclick="incorrectAns()">Heartrocket</button>
+        <button class="answer" onclick="incorrectAns()">MrHeart</button>
+        <button class="answer" onclick="correctAns()">Heartrocker</button>
+        <button class="answer" onclick="incorrectAns()">MEK</button>
+    </div>
+    
+
+    <!-- <button class="rightButton" id="buttonBack" onclick="firstPage()">
+        <h2 style="color: white">Back</h2>
+    </button>
+    <button class="rightButton" id="buttonNext" onclick="nextQuestion()">
+        <h2 style="color: white">Next</h2>
+    </button><br><br><br><br> -->
+    <button class="firstPageButton" id="buttonNext" onclick="document.location = 'firstPage.html'">
+        <h2 style="color: white">First Page</h2>
+    </button>
+
+    <script>
+        let point = 0
+        let click = 0
+        let questions = [{
+            text: "What does HRK stand for?",
+            options: ["Heartrocket", "MrHeart", "Heartrocker", "MEK"],
+            correctIndex: 2 // Index of the correct answer (Heartrocker)
+        },
+        {
+            text: "What year was HRK founded?",
+            options: ["2010", "2012", "2014", "2016"],
+            correctIndex: 1 // Index of the correct answer (2012)
+        },
+        {
+            text: "Who is the founder of HRK?",
+            options: ["Jack", "Mark", "Rock", "HRK"],
+            correctIndex: 3 // Index of the correct answer (HRK)
+        }]
+
+        function correctAns(){
+            point++
+            console.log("Correct point is " + point)
+            console.log("Correct click is " + click)
+            nextQuestion()
+        }
+        function incorrectAns(){
+            console.log("InCorrect point is " + point)
+            console.log("InCorrect click is " + click)
+            nextQuestion()
+        }
+        function nextQuestion(){
+            click++
+            loadQuestion()
+        }
+        function loadQuestion(){
+            if(click < questions.length){
+                let questionNumber = document.getElementById("questions")
+                let answerNumber = document.getElementById("answer")
+
+                // Update question text
+                questionNumber.innerHTML = `<b>Question ${click + 1} : </b> ${questions[click].text}`
+                
+                // Clear old buttons and add new ones
+                answerNumber.innerHTML = "";
+                questions[click].options.forEach((option, index) => {
+                    let button = document.createElement('button');
+                    button.classList.add('answer');
+                    button.textContent = option;
+                    if (index === questions[click].correctIndex) {
+                        button.setAttribute('onclick', 'correctAns()');
+                    } else {
+                        button.setAttribute('onclick', 'incorrectAns()');
+                    }
+                    answerNumber.appendChild(button);
+                });
+            }else{
+                document.getElementById("questions").innerHTML = `Quiz completed! <br> You scored ${point} out of ${questions.length}.`
+                document.getElementById("answer").inert = '' // Clear the answers
+            }
+
+        }
+        
+    </script>
+
+    
+
+</body>
+
+</html>
