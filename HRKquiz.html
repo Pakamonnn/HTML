@@ -2,11 +2,15 @@
 <html>
 
 <head>
-    <title>secondPage</title>
+    <title>HRK Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- improt class for img by w3 -->
     <style>
         .center{
             text-align: center;
+            /* display: block; */
+            margin: 0px auto;
         }
         .rightButton{
             float: right; /* position = right */
@@ -23,12 +27,13 @@
             /* font-size: 20px; */
         }
         .question{
-            font-size: 25px
+            font-size: 25px;
         }
         .answer{
-            font-size: 15px
+            font-size: 15px;
+            margin: 5px;
         }
-        
+       
     </style>
 </head>
 
@@ -44,16 +49,10 @@
         <button class="answer" onclick="incorrectAns()">MEK</button>
     </div>
     
-
-    <!-- <button class="rightButton" id="buttonBack" onclick="firstPage()">
-        <h2 style="color: white">Back</h2>
-    </button>
-    <button class="rightButton" id="buttonNext" onclick="nextQuestion()">
-        <h2 style="color: white">Next</h2>
-    </button><br><br><br><br> -->
     <button class="firstPageButton" id="buttonNext" onclick="document.location = 'firstPage.html'">
         <h2 style="color: white">First Page</h2>
     </button>
+    <img class="w3-round-xlarge center" id="hrkImg" src="hrk.jpg" alt="HRK" hidden> <!-- 2 class -->
 
     <script>
         let point = 0
@@ -61,28 +60,28 @@
         let questions = [{
             text: "What does HRK stand for?",
             options: ["Heartrocket", "MrHeart", "Heartrocker", "MEK"],
-            correctIndex: 2 // Index of the correct answer (Heartrocker)
+            correctIndex: 2 
         },
         {
             text: "What year was HRK founded?",
             options: ["2010", "2012", "2014", "2016"],
-            correctIndex: 1 // Index of the correct answer (2012)
+            correctIndex: 1 
         },
         {
             text: "Who is the founder of HRK?",
-            options: ["Jack", "Mark", "Rock", "HRK"],
-            correctIndex: 3 // Index of the correct answer (HRK)
+            options: ["James", "Pote", "Mek", "Ake"],
+            correctIndex: 3 
         }]
 
         function correctAns(){
             point++
-            console.log("Correct point is " + point)
-            console.log("Correct click is " + click)
+            // console.log("Correct point is " + point)
+            // console.log("Correct click is " + click)
             nextQuestion()
         }
         function incorrectAns(){
-            console.log("InCorrect point is " + point)
-            console.log("InCorrect click is " + click)
+            // console.log("InCorrect point is " + point)
+            // console.log("InCorrect click is " + click)
             nextQuestion()
         }
         function nextQuestion(){
@@ -112,10 +111,13 @@
                 });
             }else{
                 document.getElementById("questions").innerHTML = `Quiz completed! <br> You scored ${point} out of ${questions.length}.`
-                document.getElementById("answer").inert = '' // Clear the answers
+                document.getElementById("answer").innerHTML = '' // Clear the answers
+                if(point===3){
+                    document.getElementById("hrkImg").style.display = 'block'; // Show the image
+                }
             }
-
         }
+        
         
     </script>
 

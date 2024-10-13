@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Random Number</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <style>
+        .center{
+            text-align: center;
+        }
+        .textSize{
+            font-size: 15px;
+        }
+        .broder{
+            text-align: center;
+            border: 2px dashed rgb(87, 40, 166);
+            padding: 20px;
+            width: auto;
+            background-color: #fa8047;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="center">Random Number</h1>
+    <p style="font-size: 20px;">
+        Choose number to random
+        <input id="minNumber" size="3"> between <input id="maxNumber" size="3">
+    </p>
+
+    <button onclick="randomNumber()">Click to Random</button><br>
+    <h1 id="numberResult" class="center" style="color: white;" hidden></h1>
+    
+
+    <script>
+        function randomNumber(){
+            numberResult.hidden = false
+            let max = parseInt(maxNumber.value) + 1
+            let min = parseInt(minNumber.value)
+            let result = Math.floor(Math.random() * (max - min)) + min;
+            // console.log("maxNumber.value is " + max + " type is " + typeof max)
+            // console.log("minNumber.value is " + min + " type is " + typeof min)
+            // console.log("result is " + result)
+            // number.value = result
+            document.getElementById("numberResult").innerHTML = result
+
+            // Add the 'with-border' class to show the border
+            document.getElementById("numberResult").classList.add('broder');
+        }
+    </script>
+
+</body>
+
+</html>

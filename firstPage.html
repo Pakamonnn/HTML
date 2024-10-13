@@ -4,6 +4,7 @@
 <head>
     <title>firstPage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <style>
         body{
             background-color: white;
@@ -35,7 +36,7 @@
         <button class="headButton" onclick="document.location = 'HRKquiz.html'">
             <h2 style="color: white;">HRK Quiz</h2>
         </button>
-        <button class="headButton" onclick="randomizationNumber()">
+        <button class="headButton" onclick="document.location = 'randomPage.html'">
             <h2 style="color: white;">Random Number</h2>
         </button>
         <button class="headButton" onclick="singUpButton()">
@@ -43,16 +44,6 @@
         </button>
     </div>    
 
-    
-    
-    <div id="randomization" hidden>
-        <h2>Random Number</h2>
-        choose number to random
-        <input id="minNumber" size="3"> between <input id="maxNumber" size="3">
-            <!-- <br><input id="number" size="3" readonly> -->
-        <h4 id="number"></h4>
-        <button onclick="randomNumber()">Click to Random</button> 
-    </div>
     
     <div id="singUp" hidden>
         <h2>SingUp Button</h2>
@@ -111,17 +102,7 @@
             // correct.hidden = true
             // incorrect.hidden = true
         }
-        function randomNumber() {
-            let max = parseInt(maxNumber.value)
-            let min = parseInt(minNumber.value)
-            let result = Math.floor(Math.random() * (max - min)) + min;
-            // console.log("maxNumber.value is " + max + " type is " + typeof max)
-            // console.log("minNumber.value is " + min + " type is " + typeof min)
-            // console.log("result is " + result)
-            // number.value = result
-            document.getElementById("number").innerHTML = result
-        }
-        console.log("point is " + point)
+        
 
     </script>
 
