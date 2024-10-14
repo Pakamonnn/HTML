@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sing Up From</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <style>
+        .center{
+            text-align: center;
+        }
+        .textSize{
+            font-size: 20px;
+        }
+        .topic{
+            font-size: 25px;           
+            border-left: 5px solid red;
+        }
+        .tap{
+            margin-left: 10px;
+        }
+        .cancelButton{
+            background-color: #f44336;
+            cursor: pointer;
+        }
+        .singupButton{
+            background-color: #04AA6D;
+        }
+        .cancelButton, .singupButton{
+            padding: 20px 30px;
+            color: white;
+            
+            border: none;
+            float: left;
+            width: 50%;
+            margin: 10px 0px;
+        }
+        input[type=email], input[type="password"]{
+            width: 100%;
+            padding: 10px;
+            background: #f1f1f1;
+            border: none;
+            margin: 5px 0px 15px;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px){
+            .cancelButton, .singupButton{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="center"><b>Sing Up From</b></h1>
+    <p class="topic">
+        <span class="tap">Sing Up</span>
+    </p>
+
+    <div class="textSize" id="dataInput">
+        <label for="email"><b>Email</b></label>
+        <input type="email" name="email" id="email"  placeholder="Enter your Email" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" name="password" id="password"  placeholder="Enter your password" required>
+
+        <label for="repeatPassword"><b>Repeat Password</b></label>
+        <input type="password" name="repeatPassword" id="repeatPassword"  placeholder="Repeat your password" required>
+
+        <input type="checkbox" name="acceptConditons" id="acceptConditons"> 
+        <label for="acceptConditons">I agree to the Therms and Conditions</label> <!-- label help to easy to click checkbox -->
+        <br>
+        <input type="checkbox" name="acceptPrivacy" id="acceptPrivacy">
+        <label for="acceptPrivacy">I agree to the Privacy Policy</label>
+
+    </div>
+
+    <button type="button" class="cancelButton textSize" id="cancelButton" onclick="document.location = 'index.html'"><b>Cancel</b></button>
+    <button type="submit" class="singupButton textSize" id="singUpButton"><b>Sing Up</b></button>
+    <h1 class="center textSize" id="singupSuccess" hidden><b>Sing Up Success</b></h1>
+
+    <script>
+
+        let acceptConditons = document.getElementById("acceptConditons")
+        let acceptPrivacy = document.getElementById("acceptPrivacy")
+        let singUpButton = document.getElementById("singUpButton")
+
+        singUpButton.addEventListener("click", function(even){
+            // Prevent form submission if both checkboxes are not checked
+            if (!acceptConditons.checked || !acceptPrivacy.checked) {
+                event.preventDefault(); // Stop the form from submitting
+                alert("Please agree to the Terms and Conditions and the Privacy Policy.");
+            } else {
+                // console.log("Form submitted successfully");
+                dataInput.hidden = true
+                singUpButton.hidden = true
+                cancelButton.hidden = true
+                singupSuccess.hidden = false
+            }
+        })
+
+        // acceptConditons.onclick = checkCondition;
+        // acceptPrivacy.onclick = checkCondition;
+
+        // function checkCondition(){
+        //     if(acceptConditons.checked && acceptPrivacy.checked){
+        //         console.log("both")
+
+        //     }else if(acceptConditons.checked){
+        //         console.log("Conditons.checked")
+        //     }else if(acceptPrivacy.checked){
+        //         console.log("Privacy.checked")
+        //     }else{
+        //         console.log("nonn") 
+        //     }
+        // }      
+
+    </script>
+
+</body>
+
+</html>

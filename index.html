@@ -16,17 +16,10 @@
             border-radius: 15px;
             background: #f20d1f;
             margin: 5px; /* Added for spacing between buttons */
-            /* padding: 20px;
-            width: 150px;
+            padding: 1px 20px;
+            cursor: pointer;
+            /* width: 150px;
             height: 70px; */
-        }
-        .backButton{
-            float: right; /* position = right */
-            border-radius: 15px;
-            background: #059BFA;
-        }
-        #question{
-            font-size: 30px
         }
     </style>
 </head>
@@ -39,72 +32,11 @@
         <button class="headButton" onclick="document.location = 'randomPage.html'">
             <h2 style="color: white;">Random Number</h2>
         </button>
-        <button class="headButton" onclick="singUpButton()">
-            <h2 style="color: white;">SingUp Button</h2>
+        <button class="headButton" onclick="document.location = 'singUpButton.html'">
+            <h2 style="color: white;">Sing Up From</h2>
         </button>
     </div>    
 
-    
-    <div id="singUp" hidden>
-        <h2>SingUp Button</h2>
-    </div>
-
-    <br><button class="backButton" id="buttonBack" onclick="firstPage()" hidden>
-        <h2 style="color: white">Back</h2>
-    </button>
-
-    <script>
-        let point = 0
-        function allQuiz(){
-            quiz.hidden = false
-            randomization.hidden = true
-            singUp.hidden = true
-            buttonSelect.hidden = true
-            buttonBack.hidden = false
-        }
-        function randomizationNumber(){
-            quiz.hidden = true
-            randomization.hidden = false
-            singUp.hidden = true
-            buttonSelect.hidden = true
-            buttonBack.hidden = false
-        }
-        function singUpButton(){
-            quiz.hidden = true
-            randomization.hidden = true
-            singUp.hidden = false
-            buttonSelect.hidden = true
-            buttonBack.hidden = false
-        }
-        function firstPage(){
-            buttonSelect.hidden = false
-            buttonBack.hidden = true
-            quiz.hidden = true
-            randomization.hidden = true
-            singUp.hidden = true
-        }
-        function correctAns() {
-            point = point + 1
-            question.hidden = true
-            // correct.hidden = false
-            // incorrect.hidden = true
-            console.log("point is " + point)
-        }
-        function incorrectAns() {
-            point = point
-            question.hidden = true
-            // correct.hidden = true
-            // incorrect.hidden = false
-            console.log("point is " + point)
-        }
-        function tryAgain() {
-            question.hidden = false
-            // correct.hidden = true
-            // incorrect.hidden = true
-        }
-        
-
-    </script>
 
 </body>
 
