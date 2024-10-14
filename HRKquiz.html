@@ -24,10 +24,10 @@
             border-radius: 15px;
             background: #d505fa;
             margin: 5px;
-            /* font-size: 20px; */
-        }
-        .question{
-            font-size: 25px;
+            font-size: 20px;
+            padding: 20px;
+            font-weight: bold;
+            color: white;
         }
         .answer{
             font-size: 15px;
@@ -39,8 +39,8 @@
 
 <body>
     
-    <h1 class="center">HRK Quiz</h1>
-    <p class="question" id="questions"><b>Question 1 : </b> What does HRK stand for?</p>
+    <h1 class="center"><b>HRK Quiz</b></h1>
+    <p id="questions" style="font-size: 25px;"><b>Question 1 : </b> What does HRK stand for?</p>
 
     <div id="answer">
         <button class="answer" onclick="incorrectAns()">Heartrocket</button>
@@ -48,11 +48,17 @@
         <button class="answer" onclick="correctAns()">Heartrocker</button>
         <button class="answer" onclick="incorrectAns()">MEK</button>
     </div>
+
+    <div id="finishQuiz" hidden>
+        <p class="center" id="resultPoint" style="font-size: 25px;">hidden text</p>
+        <br><br>
+        <img class="w3-round-xlarge center" id="hrkImg" src="hrk.jpg" alt="HRK"> <!-- 2 class -->
+    </div>
     
-    <button class="firstPageButton" id="buttonNext" onclick="document.location = 'firstPage.html'">
-        <h2 style="color: white">First Page</h2>
+    <button class="firstPageButton" id="buttonNext" onclick="document.location = 'index.html'">
+        First Page
     </button>
-    <img class="w3-round-xlarge center" id="hrkImg" src="hrk.jpg" alt="HRK" hidden> <!-- 2 class -->
+    
 
     <script>
         let point = 0
@@ -110,8 +116,10 @@
                     answerNumber.appendChild(button);
                 });
             }else{
-                document.getElementById("questions").innerHTML = `Quiz completed! <br> You scored ${point} out of ${questions.length}.`
+                finishQuiz.hidden = false
+                document.getElementById("questions").innerHTML = ''
                 document.getElementById("answer").innerHTML = '' // Clear the answers
+                document.getElementById("resultPoint").innerHTML = `Quiz completed! <br> You scored ${point} out of ${questions.length}.`
                 if(point===3){
                     document.getElementById("hrkImg").style.display = 'block'; // Show the image
                 }
@@ -119,9 +127,7 @@
         }
         
         
-    </script>
-
-    
+    </script>  
 
 </body>
 

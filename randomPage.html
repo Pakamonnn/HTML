@@ -9,32 +9,58 @@
         .center{
             text-align: center;
         }
-        .textSize{
-            font-size: 15px;
-        }
         .broder{
             text-align: center;
-            border: 2px dashed rgb(87, 40, 166);
+            border: 2px solid #f533b5;
             padding: 20px;
             width: auto;
-            background-color: #fa8047;
+            background-color: #71E2F9;
             border-radius: 50%;
             display: inline-block;
+            
+        }
+        .firstPageButton{
+            float: right; /* position = right */
+            border-radius: 15px;
+            background: #d505fa;
+            margin: 5px;
+            font-size: 20px;
+            padding: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .randomButton{
+            font-size: 20px;
+            margin: 5px;
+            border-radius: 15px;
+            background: #3cb71d;
+            font-style: oblique;
+            color: white;
+        }
+        .resultText{
+            color: rgb(35, 15, 101);
+            font-size: 25px;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <h1 class="center">Random Number</h1>
-    <p style="font-size: 20px;">
+    <h1 class="center"><b>Random Number</b></h1>
+    <p style="font-size: 25px;">
         Choose number to random
         <input id="minNumber" size="3"> between <input id="maxNumber" size="3">
     </p>
 
-    <button onclick="randomNumber()">Click to Random</button><br>
-    <h1 id="numberResult" class="center" style="color: white;" hidden></h1>
+    <button class="randomButton" onclick="randomNumber()"><b>Click to Random</b></button><br>
     
+    <p id="numberResult" class="resultText broder">
+            <b>Result</b>
+    </p>
+    <button class="firstPageButton" id="buttonNext" onclick="document.location = 'index.html'">
+        First Page
+    </button>   
 
     <script>
         function randomNumber(){
